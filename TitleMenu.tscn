@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://PlayButton.gd" type="Script" id=1]
+[ext_resource path="res://Assets/music/Swinging Pants.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Assets/more fonts/KiriFont.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 80
+outline_size = 6
+outline_color = Color( 0.054902, 0.780392, 0.27451, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.27451, 0.054902, 0.780392, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 10
+
+[sub_resource type="DynamicFont" id=3]
+size = 33
+font_data = ExtResource( 3 )
+
+[node name="TitleMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color( 0.352941, 0.0980392, 0.937255, 1 )
+margin_right = 1024.0
+margin_bottom = 600.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 176.199
+margin_top = 125.475
+margin_right = 869.199
+margin_bottom = 206.475
+custom_fonts/font = SubResource( 1 )
+text = "Space Bubble"
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 333.036
+margin_top = 343.67
+margin_right = 506.036
+margin_bottom = 496.67
+rect_scale = Vector2( 2.08, 1 )
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="PlayButton" type="Button" parent="Panel"]
+margin_left = -16.6855
+margin_top = 10.6426
+margin_right = 187.315
+margin_bottom = 144.643
+custom_fonts/font = SubResource( 3 )
+text = "PLAY!"
+flat = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicTitleScreen" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+pitch_scale = 1.93
+autoplay = true
+[connection signal="pressed" from="Panel/PlayButton" to="Panel/PlayButton" method="_on_PlayButton_pressed"]
